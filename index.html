@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dark Mode/Light Mode Toggle Example</title>
+  <style>
+    /* Light mode styles */
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      font-family: sans-serif;
+      font-size: 2rem;
+      margin: 0 0 1rem;
+    }
+    p {
+      font-family: sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #333;
+      color: #f5f5f5;
+    }
+    body.dark-mode h1 {
+      color: #f5f5f5;
+    }
+    body.dark-mode p {
+      color: #ddd;
+    }
+
+    /* Toggle switch styles */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      margin: 1rem 0;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .slider.round {
+      border-radius: 34px;
+    }
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dark Mode/Light Mode Toggle Example</h1>
+  <p>Click the toggle switch to switch between dark mode and light mode.</p>
+
+  <label class="switch">
+    <input type="checkbox" id="toggle">
+    <span class="slider round"></span>
+  </label>
+
+  <script>
+    const toggleSwitch = document.querySelector('#toggle');
+    const body = document.querySelector('body');
+
+    function switchTheme(e) {
+      if (e.target.checked) {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>
